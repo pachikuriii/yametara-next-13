@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import useSWR from "swr";
+import PrevNextButtons from "@/components/questions/prevNextButtons";
 
 const Page = ({ params }: { params: { id: string } }) => {
   if (params === null) {
@@ -8,21 +9,11 @@ const Page = ({ params }: { params: { id: string } }) => {
   }
   return (
     <>
-      <h1>Page for {params.id}</h1>
-      <p>{params.id}</p>
-      <ul>
-        <li>
-          <Link href="/questions/1">go to 1</Link>
-        </li>
-        <li>
-          <Link href="/questions/2">go to 2</Link>
-        </li>
-        <li>
-          <Link href="/questions/3">go to 3</Link>
-        </li>
-      </ul>
-      <hr />
+      <h1 className="text-2xl text-center">{params.id}</h1>
+
       <Content id={params.id} />
+
+      <PrevNextButtons id={params.id} />
     </>
   );
 };
@@ -38,4 +29,5 @@ function Content({ id }: { id: string }) {
   if (!data) return <h1>Loading...</h1>;
   return <pre>{JSON.stringify(data, null, 2)}</pre>;
 }
+
 export default Page;
