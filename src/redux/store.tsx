@@ -1,12 +1,10 @@
 import { legacy_createStore as createStore } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
-import storageSession from "redux-persist/lib/storage/session";
-import { answersReducer } from "./answerReducer";
-const rootReducer = (state = answersReducer) => {
-  return state;
-};
-const authPersistConfig = { key: "yametara", storage: storageSession };
-const persistedReducer = persistReducer(authPersistConfig, rootReducer);
+import { rootReducer } from "./reducers";
+import sessionStorage from "redux-persist/lib/storage/session";
+
+const persistConfig = { key: "yametara", storage: sessionStorage };
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(persistedReducer);
 const persistor = persistStore(store);
 
