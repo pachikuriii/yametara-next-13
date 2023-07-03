@@ -1,5 +1,4 @@
 "use client";
-
 import PrevNextButtons from "@/components/questions/prevNextButtons";
 
 const Page = ({ params }: { params: { id: string } }) => {
@@ -15,17 +14,5 @@ const Page = ({ params }: { params: { id: string } }) => {
     </>
   );
 };
-
-// const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
-// function Content({ id }: { id: string }) {
-//   const { data, error } = useSWR(
-//     "https://jsonplaceholder.typicode.com/todos/" + id,
-//     fetcher
-//   );
-//   if (error) return <h1>Failed to load</h1>;
-//   if (!data) return <h1>Loading...</h1>;
-//   return <pre>{JSON.stringify(data, null, 2)}</pre>;
-// }
 
 export default Page;
