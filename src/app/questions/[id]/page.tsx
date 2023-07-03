@@ -1,12 +1,8 @@
 "use client";
-import useSWR from "swr";
+
 import PrevNextButtons from "@/components/questions/prevNextButtons";
-import { Answer } from "@/type/answer.type";
-import { useDispatch } from "react-redux";
 
 const Page = ({ params }: { params: { id: string } }) => {
-  const dispatch = useDispatch();
-
   if (params === null) {
     return <h1>Loading...</h1>;
   }
