@@ -1,11 +1,14 @@
 import Link from "next/link";
-export default function Home() {
+
+const Result = () => {
   return (
-    <main>
+    <>
       <p>結果ページ</p>
       <Link href="/" className="underline">
         TOPへ
       </Link>
-    </main>
+    </>
   );
-}
+};
+
+export default Result;
