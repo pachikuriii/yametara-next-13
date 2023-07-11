@@ -1,11 +1,11 @@
-import Link from "next/link";
+import Link from 'next/link'
 
 const Footer = () => {
   return (
-    <footer className="text-center">
-      <Link href="https://twitter.com/">twitter</Link>
+    <footer className='text-center'>
+      <Link href='https://twitter.com/'>twitter</Link>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

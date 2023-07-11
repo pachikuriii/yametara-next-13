@@ -1,16 +1,16 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux'
 
 const counterReducer = (state = 1, action: any) => {
   switch (action.type) {
-    case "INCREMENT":
-      return state + 1;
+    case 'INCREMENT':
+      return state + 1
     default:
-      return state;
+      return state
   }
-};
+}
 
 export const rootReducer = combineReducers({
   count: counterReducer,
-});
+})
 
-export type RootState = ReturnType<typeof rootReducer>;
+export type RootState = ReturnType<typeof rootReducer>
