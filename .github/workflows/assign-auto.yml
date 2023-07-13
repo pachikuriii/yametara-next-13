@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set GitHub assignees
-        env:
-          ASSIGNEES: '${{ github.actor }}'aa
+        env:tt
+          ASSIGNEES: '${{ github.actor }}'
         run: |
           assignee_count=$(cat ${{ github.event_path }} | jq '.pull_request.assignees | length')
           if [[ 0 == $assignee_count ]]; then
