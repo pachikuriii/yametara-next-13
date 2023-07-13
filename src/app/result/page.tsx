@@ -5,7 +5,7 @@ const Result = () => {
     <>
       <p>結果ページ</p>
       <Link href='/' className='underline'>
-        TOPへ
+        TOPへへへ
       </Link>
     </>
   )
