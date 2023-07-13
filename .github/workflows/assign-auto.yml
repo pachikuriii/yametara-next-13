@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Set GitHub assignees
         env:
-          ASSIGNEES: '${{ github.actor }}'
+          ASSIGNEES: '${{ github.actor }}'aa
         run: |
           assignee_count=$(cat ${{ github.event_path }} | jq '.pull_request.assignees | length')
           if [[ 0 == $assignee_count ]]; then
