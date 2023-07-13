@@ -1,9 +1,9 @@
 name: Assign auto
 on:
-  issues:
-    types: opened
   pull_request:
-    types: opened
+    types: [opened]
+  issues:
+    types: [opened]
 
 jobs:
   assign:
@@ -22,4 +22,18 @@ jobs:
                 -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
                 -d "{ \"assignees\": $assignees }" \
                https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/assignees
+          fi
+
+      - name: Set issue assignees
+        env:
+          ASSIGNEES: '${{ github.actor }}'
+        run: |
+          assignee_count=$(cat ${{ github.event_path }} | jq '.issue.assignees | length')
+          if [[ 0 == $assignee_count ]]; then
+            assignees=$(echo "\"${ASSIGNEES// /}\"" | jq 'split(",")')
+            curl -X POST \
+              -H "Content-Type: application/json" \
+              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              -d "{ \"assignees\": $assignees }" \
+              https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/assignees
           fi
