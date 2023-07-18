@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 const QUESTION_LENGTH = 8
 
-const PrevNextButtons = ({ id }: { id: string }) => {
+const PrevNextButtons = ({ id }: { id: string }, onSubmit: any) => {
   const [prevPath, setPrevPath] = useState('')
   const [nextPath, setNextPath] = useState('')
 
