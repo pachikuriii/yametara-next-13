@@ -1,4 +1,4 @@
-import Footer from '../../components/questions/footer'
+import Footer from '../../components/footer'
 import Header from '../../components/questions/header'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
