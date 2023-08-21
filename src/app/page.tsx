@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
+import Footer from '@/components/top/footer'
 import { RootState } from '@/redux/reducers'
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
 
       <button onClick={increment}>aaa</button>
       <button onClick={saveToSessionStorage}>bbb</button>
+      <Footer />
     </>
   )
 }
