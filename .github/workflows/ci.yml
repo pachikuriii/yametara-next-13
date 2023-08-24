@@ -12,5 +12,7 @@ jobs:
           node-version: 18.16.0
       - name: Install dependencies
         run: npm install
-      - name: esLint
+      - name: ESLint
         run: npm run lint
+      - name: Prettier
+        run: npm run format
