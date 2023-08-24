@@ -14,3 +14,5 @@ jobs:
         run: npm install
       - name: esLint
         run: npm run lint
+      - name: esLint
+        run: npm run format
