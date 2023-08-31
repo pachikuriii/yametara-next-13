@@ -1,11 +1,21 @@
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 const QUESTION_LENGTH = 8
 
-const PrevNextButtons = ({ id }: { id: string }, onSubmit: any) => {
+interface Props {
+  onSubmit: () => void
+  id: string
+  isValid: boolean
+}
+const PrevNextButtons = ({ onSubmit, id, isValid }: Props) => {
   const [prevPath, setPrevPath] = useState('')
   const [nextPath, setNextPath] = useState('')
+  const router = useRouter()
+  const submitHandler = (path: string, onSubmit: any) => {
+    onSubmit()
+    isValid && router.push(path)
+  }
 
   useEffect(() => {
     id === '1' ? setPrevPath('/') : setPrevPath(`/questions/${Number(id) - 1}`)
@@ -16,8 +26,8 @@ const PrevNextButtons = ({ id }: { id: string }, onSubmit: any) => {
 
   return (
     <>
-      <Link href={prevPath}>戻る</Link>
-      <Link href={nextPath}>次へ</Link>
+      <p onClick={() => router.push(prevPath)}>戻る</p>
+      <p onClick={() => submitHandler(nextPath, onSubmit)}>次へ</p>
     </>
   )
 }

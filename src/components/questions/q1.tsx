@@ -9,34 +9,27 @@ type Inputs = {
 }
 const Q1 = (params: { id: string }) => {
   const dispatch = useDispatch()
-  const submit = (data: Inputs) => {
-    const payload = { retirementDate: data.retirementDate, retirementReason: data.retirementReason }
-    dispatch({ type: 'SUBMIT', payload })
-  }
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<Inputs>()
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data)
-    submit(data)
+    const payload = { retirementDate: data.retirementDate, retirementReason: data.retirementReason }
+    dispatch({ type: 'SUBMIT', payload })
   }
 
-  interface OPTIONS {
-    [key: string]: string
-  }
-  const OPTIONS: OPTIONS = {
+  const OPTIONS: Record<string, string> = {
     personal: '自己都合',
     company: '会社都合',
     others: 'その他',
-  }
+  } as const
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form>
         <input type='date' {...register('retirementDate', { required: true })} />
         {errors.retirementDate && <span>選択してください</span>}
         <br />
@@ -56,8 +49,8 @@ const Q1 = (params: { id: string }) => {
           )
         })}
         {errors.retirementReason && <span>選択してください</span>}
-        <input type='submit' />
-        <PrevNextButtons id={params.id} />
+
+        <PrevNextButtons id={params.id} onSubmit={handleSubmit(onSubmit)} isValid={isValid} />
       </form>
     </>
   )
