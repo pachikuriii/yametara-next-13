@@ -1,18 +1,13 @@
 'use client'
-import PrevNextButtons from '@/components/questions/prevNextButtons'
+
+import Q1 from '@/components/questions/q1'
 
 const Page = ({ params }: { params: { id: string } }) => {
   if (params === null) {
     return <h1>Loading...</h1>
   }
 
-  return (
-    <>
-      <h1 className='text-2xl text-center'>{params.id}</h1>
-      <button className='text-2xl'>{params.id}</button>
-      <PrevNextButtons id={params.id} />
-    </>
-  )
+  return <>{params.id === '1' && <Q1 id={params.id} />}</>
 }
 
 export default Page
