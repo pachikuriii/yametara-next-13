@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
-import Footer from '../components/top/footer'
+import Footer from '@/components/top/footer'
 import { RootState } from '@/redux/reducers'
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <h1 className='text-3xl text-center'>yametara</h1>
 
-      <Link href='/questions/1'>はじめる</Link>
+      <Link href={{ pathname: '/questions/[id]', query: { id: 1 } }}>はじめる</Link>
 
       <Footer />
     </>
