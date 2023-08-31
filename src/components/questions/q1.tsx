@@ -1,4 +1,3 @@
-'use client'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import PrevNextButtons from './prevNextButtons'

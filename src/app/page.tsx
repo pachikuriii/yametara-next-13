@@ -15,7 +15,7 @@ export default function Home() {
       <h1 className='text-3xl text-center'>yametara</h1>
 
       <Link href='/questions/1'>はじめる</Link>
-      <button onClick={increment}>aaa</button>
+
       <Footer />
     </>
   )
