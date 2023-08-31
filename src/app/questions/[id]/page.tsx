@@ -1,6 +1,5 @@
 'use client'
-
-import Q1 from '@/components/questions/q1'
+import Q1 from '../../../components/questions/q1'
 
 const Page = ({ params }: { params: { id: string } }) => {
   if (params === null) {
