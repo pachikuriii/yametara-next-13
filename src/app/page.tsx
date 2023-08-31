@@ -13,14 +13,9 @@ export default function Home() {
   return (
     <>
       <h1 className='text-3xl text-center'>yametara</h1>
-      <Link
-        href={{
-          pathname: '/blog/[slug]',
-          query: { slug: 'my-post' },
-        }}
-      >
-        はじめる
-      </Link>
+
+      <Link href='/questions/1'>はじめる</Link>
+
       <Footer />
     </>
   )
