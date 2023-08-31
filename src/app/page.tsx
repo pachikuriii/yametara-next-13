@@ -15,7 +15,7 @@ export default function Home() {
       <h1 className='text-3xl text-center'>yametara</h1>
       <Link
         href={{
-          pathname: '/questions',
+          pathname: '/questions/[id]',
           query: { id: '1' },
         }}
       >
