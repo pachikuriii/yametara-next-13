@@ -14,9 +14,7 @@ export default function Home() {
     <>
       <h1 className='text-3xl text-center'>yametara</h1>
 
-      <Link href='/questions/1' prefetch={false}>
-        はじめる
-      </Link>
+      <Link href='/questions/1'>はじめる</Link>
 
       <Footer />
     </>
