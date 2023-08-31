@@ -26,8 +26,12 @@ const PrevNextButtons = ({ onSubmit, id, isValid }: Props) => {
 
   return (
     <>
-      <p onClick={() => router.push(prevPath)}>戻る</p>
-      <p onClick={() => submitHandler(nextPath, onSubmit)}>次へ</p>
+      <p className='cursor-pointer' onClick={() => router.push(prevPath)}>
+        戻る
+      </p>
+      <p className='cursor-pointer' onClick={() => submitHandler(nextPath, onSubmit)}>
+        次へ
+      </p>
     </>
   )
 }
