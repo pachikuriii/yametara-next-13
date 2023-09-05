@@ -8,9 +8,11 @@ interface Props {
   id: string
   isValid: boolean
 }
+
 const PrevNextButtons = ({ onSubmit, id, isValid }: Props) => {
   const [prevPath, setPrevPath] = useState('')
   const [nextPath, setNextPath] = useState('')
+  const [nextLabel, setNextLabel] = useState('次へ')
   const router = useRouter()
   const submitHandler = (path: string, onSubmit: any) => {
     onSubmit()
@@ -19,9 +21,12 @@ const PrevNextButtons = ({ onSubmit, id, isValid }: Props) => {
 
   useEffect(() => {
     id === '1' ? setPrevPath('/') : setPrevPath(`/questions/${Number(id) - 1}`)
-    id === String(QUESTION_LENGTH)
-      ? setNextPath('/result')
-      : setNextPath(`/questions/${Number(id) + 1}`)
+    if (id === String(QUESTION_LENGTH)) {
+      setNextLabel('結果を見る')
+      setNextPath('/result')
+    } else {
+      setNextPath(`/questions/${Number(id) + 1}`)
+    }
   }, [id])
 
   return (
@@ -30,7 +35,7 @@ const PrevNextButtons = ({ onSubmit, id, isValid }: Props) => {
         戻る
       </p>
       <p className='cursor-pointer' onClick={() => submitHandler(nextPath, onSubmit)}>
-        次へ
+        {nextLabel}
       </p>
     </>
   )
