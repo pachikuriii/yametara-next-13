@@ -4,10 +4,6 @@ import { useEffect, useState } from 'react'
 const FIRST_QUESTION = '1'
 const LAST_QUESTION = '8'
 
-async function getData() {
-  const res = await fetch('http://localhost:3000/api/result', { method: 'POST' })
-  return res.json()
-}
 interface Props {
   id: string
 }
