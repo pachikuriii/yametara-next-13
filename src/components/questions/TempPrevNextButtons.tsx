@@ -1,9 +1,13 @@
 import { useRouter } from 'next/navigation'
-import next from 'next/types'
 import { useEffect, useState } from 'react'
 
-const QUESTION_LENGTH = 8
+const FIRST_QUESTION = '1'
+const LAST_QUESTION = '8'
 
+async function getData() {
+  const res = await fetch('http://localhost:3000/api/result', { method: 'POST' })
+  return res.json()
+}
 interface Props {
   id: string
 }
@@ -14,8 +18,8 @@ export const TempPrevNextButtons = ({ id }: Props) => {
   const router = useRouter()
 
   useEffect(() => {
-    id === '1' ? setPrevPath('/') : setPrevPath(`/questions/${Number(id) - 1}`)
-    if (id === String(QUESTION_LENGTH)) {
+    id === FIRST_QUESTION ? setPrevPath('/') : setPrevPath(`/questions/${Number(id) - 1}`)
+    if (id === LAST_QUESTION) {
       setNextLabel('結果を見る')
       setNextPath('/result')
     } else {
@@ -28,7 +32,12 @@ export const TempPrevNextButtons = ({ id }: Props) => {
       <p className='cursor-pointer' onClick={() => router.push(prevPath)}>
         戻る
       </p>
-      <p className='cursor-pointer' onClick={() => router.push(nextPath)}>
+      <p
+        className='cursor-pointer'
+        onClick={() => {
+          router.push(nextPath)
+        }}
+      >
         {nextLabel}
       </p>
     </>

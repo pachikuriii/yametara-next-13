@@ -8,6 +8,7 @@ interface Props {
   id: string
   isValid: boolean
 }
+
 const PrevNextButtons = ({ onSubmit, id, isValid }: Props) => {
   const [prevPath, setPrevPath] = useState('')
   const [nextPath, setNextPath] = useState('')
