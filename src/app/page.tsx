@@ -1,8 +1,12 @@
 'use client'
-import Link from 'next/link'
+
 import { useSelector, useDispatch } from 'react-redux'
 import Footer from '@/components/top/footer'
 import { RootState } from '@/redux/reducers'
+
+async function getData() {
+  await fetch('http://localhost:3000/api', { method: 'POST' })
+}
 
 export default function Home() {
   const dispatch = useDispatch()
@@ -13,9 +17,7 @@ export default function Home() {
   return (
     <>
       <h1 className='text-3xl text-center'>yametara</h1>
-
-      <Link href='/questions/1'>はじめる</Link>
-      <button onClick={increment}>aaa</button>
+      <p onClick={getData}>はじめる</p>
       <Footer />
     </>
   )
